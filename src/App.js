@@ -1,7 +1,18 @@
-import { Container } from '@mui/material';
+import { Container, ThemeProvider, styled } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { AccountBalance, Send } from '@mui/icons-material';
+import { myTheme } from './Theme';
+
+
+const StyledButton = styled(Button)({
+  backgroundColor: 'gray',
+  color: 'greenyellow',
+  '&:hover': {
+    backgroundColor: 'red',
+    color: 'white'
+  }
+})
 
 function App() {
   return (
@@ -35,9 +46,19 @@ function App() {
         }
       }}>Styled Button</Button>
       <br /><br />
+      {/* Icons starts here */}
       <Button variant="contained" startIcon={<Send />}> Send Icon Check  </Button>
       <br /><br />
       <Button variant="outlined" startIcon={<AccountBalance />}> Check Bank Balance </Button>
+      <br /><br />
+      {/* Styled component starts here */}
+      <StyledButton variant='contained'>Styled Comp</StyledButton>
+      <br /><br />
+      {/* apply custom theme to our application */}
+      <ThemeProvider theme={myTheme}>
+        <Button variant='contained'>Apply theme</Button>
+      </ThemeProvider>
+
 
     </Container>
   );
